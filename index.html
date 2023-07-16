@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hex Editor</title>
+    <div> Notes: There is no save functionality right now </div>
+    <div>If you encounter any issues please report them <a href="https://github.com/PollyThePancake/HTML-HexEditor/issues">here</a> </div>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Hex Editor</h1>
+
+    <button id="loadButton" class="button">Load file</button>
+    <button id="saveButton" class="button">Save file</button>
+
+    <table class="hexEditor" border>
+
+        <!-- Table Headers -->
+        <tr class="headers">
+            <td id="offsetHeader">Offset</td>
+            <td><table id="hexHeader"></table></td>
+            <td id="chrHeader">ASCII</td>
+        </tr>
+
+        <!-- Table Contents -->
+        <tr class="tables">
+            <td><table id="off"><td>00000000</td></table></td>
+            <td><table id="hex"><td>00</td></table></td>
+            <td><table id="chr"><td>.</td></table></td>
+        </tr>
+
+    </table>
+
+
+</body>
+
+</html>

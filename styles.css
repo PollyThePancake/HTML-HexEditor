@@ -1,0 +1,51 @@
+* {
+    background-color: #252525;
+    color: white;
+    font-family: system-ui;
+    padding: 0px;
+}
+
+.button {
+    font-size: 15px;
+    width: 85px;
+    background-color: #252525;
+    color: white;
+    padding: 0px;
+}
+
+.hexEditor * {
+    font: 1em 'Inconsolata', monospace;
+}
+
+.headers * {
+    font-weight: bold;
+}
+
+.headers td {
+    text-align: center;
+}
+
+table input {
+    border:none;
+    outline: none;
+}
+
+#offset input {
+    width: 20px;
+}
+
+#hexHeader input {
+    width: 20px;
+}
+
+#hex input {
+    width: 20px;
+}
+
+#chr * {
+    width: 9px;
+}
+
+#chr {
+    width: 148px;
+}
