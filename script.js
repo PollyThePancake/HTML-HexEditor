@@ -1,6 +1,7 @@
-var fileSize;
+var fileSize = 0;
 var fileData;
 var loadButton;
+var originalFileName;
 var saveButton;
 var off;
 var hex;
@@ -40,16 +41,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 write2off();
             }
             reader.readAsArrayBuffer(file);
+            originalFileName = file.name;
+        }
+    }
+
+    saveButton.onclick = function () {
+        if (fileSize != 0) {
+            savedData = []
+            for (let a = 0; a < fileSize; a++) {
+                savedData.push(Number("0x" + document.getElementById("hex " + a).value));
+            }
+            console.log(savedData)
+
+            const link = document.createElement("a");
+            var dataUrl = "data:application/octet-stream;base64," + btoa(String.fromCharCode.apply(!1, new Uint8Array(savedData)));
+            link.href = dataUrl
+            link.download = originalFileName;
+            link.click();
+            URL.revokeObjectURL(dataUrl);
         }
     }
 })
 
-function num2hex(num) {
-    return num.toString(16).padStart(2, "0").toUpperCase();
-}
+
 
 function hex2chr(hex) {
     return num2chr(Number("0x" + hex));
+}
+
+function hex2num(hex) {
+    return Number("0x" + hex);
+}
+
+function num2hex(num) {
+    return num.toString(16).padStart(2, "0").toUpperCase();
 }
 
 function num2chr(num) {
@@ -74,11 +99,11 @@ function write2hex() {
             input.value = num2hex(fileData[a * 16 + b]);
             input.id = hex.id + " " + (a * 16 + b);
             input.maxLength = 2;
-            
+
             input.onchange = function () {
                 validateHex(this);
             }
-            
+
             input.oninput = function () {
                 validateHex(this);
             }
@@ -94,7 +119,7 @@ function write2hex() {
                 } else {
                     validateHex(this);
                     this.value = this.value.padStart(2, "0");
-                    document.getElementById(chr.id+this.id.replace(hex.id,"")).value = hex2chr(this.value.padStart(2, "0"));
+                    document.getElementById(chr.id + this.id.replace(hex.id, "")).value = hex2chr(this.value.padStart(2, "0"));
                 }
             };
 
@@ -117,7 +142,7 @@ function write2chr() {
             input.onchange = function () {
                 validateChr(this);
             }
-            
+
             input.oninput = function () {
                 validateChr(this);
             }
@@ -132,7 +157,7 @@ function write2chr() {
                     this.value = this.placeholder;
                 } else {
                     validateChr(this);
-                    document.getElementById(hex.id+this.id.replace(chr.id,"")).value = chr2hex(this.value);
+                    document.getElementById(hex.id + this.id.replace(chr.id, "")).value = chr2hex(this.value);
                 }
             };
 
