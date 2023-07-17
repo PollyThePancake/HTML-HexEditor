@@ -4,8 +4,8 @@
 <head>
     <title>Hex Editor</title>
     <div>Notes:</div>
-    <div>- Dont try large files (100KB+) or you will be waiting a long time/will never load due to high ram usage</div>
-    <div>- If you encounter any issues please report them <a href="https://github.com/PollyThePancake/HTML-HexEditor/issues">here</a></div>
+    <div>- Dont try large files (50KB+) or you will be waiting a long time/will never load due to high ram usage</div>
+    <div>- If you encounter any issues or suggestions, please report them <a href="https://github.com/PollyThePancake/HTML-HexEditor/issues">here</a></div>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="script.js"></script>
 </head>
@@ -15,6 +15,8 @@
 
     <button id="loadButton" class="button">Load file</button>
     <button id="saveButton" class="button">Save file</button>
+    <input type="checkbox" id="autoByte" value="automatically move onto the next byte" checked="true">
+    <label for="autoByte">Automatically move onto the next byte</label><br>
 
     <table class="hexEditor" border>
 

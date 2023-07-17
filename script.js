@@ -10,7 +10,8 @@ var chr;
 document.addEventListener("DOMContentLoaded", function () {
     loadButton = document.getElementById("loadButton"); // For loading files
     saveButton = document.getElementById("saveButton"); // For saving files
-    hexHeader = document.getElementById("hexHeader"); // Table for hex values
+    autoByte = document.getElementById("autoByte"); // Determins whether or not to automatically move to the next byte
+    hexHeader = document.getElementById("hexHeader"); // Header for the hex table
     off = document.getElementById("off"); // Table for offsets
     hex = document.getElementById("hex"); // Table for hex values
     chr = document.getElementById("chr"); // Table for ASCII values
@@ -106,6 +107,12 @@ function write2hex() {
 
             input.oninput = function () {
                 validateHex(this);
+                if (this.value.length > 1 && autoByte.checked){
+                    console.log(this.id)
+                    console.log(hex.id + " " + (Number(this.id.replace(hex.id, ""))+1))
+                    try {document.getElementById(hex.id + " " + (Number(this.id.replace(hex.id, ""))+1)).focus();}
+                    catch {alert("You have reached the end of the table")}
+                }
             }
 
             input.onfocus = function () {
@@ -145,6 +152,12 @@ function write2chr() {
 
             input.oninput = function () {
                 validateChr(this);
+                if (this.value.length > 0 && autoByte.checked){
+                    console.log(this.id)
+                    console.log(chr.id + " " + (Number(this.id.replace(chr.id, ""))+1))
+                    try {document.getElementById(chr.id + " " + (Number(this.id.replace(chr.id, ""))+1)).focus();}
+                    catch {alert("You have reached the end of the table")}
+                }
             }
 
             input.onfocus = function () {
